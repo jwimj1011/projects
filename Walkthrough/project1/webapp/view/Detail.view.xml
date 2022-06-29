@@ -1,0 +1,19 @@
+<mvc:View
+    controllerName="com.check.project1.controller.Detail"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page
+		title="{i18n>detailPageTitle}"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+		<ObjectHeader
+            intro="Prodect Name : {invoice>ProductName}"
+			title="Shipper Name : {invoice>ShipperName}&#10;
+                   Address : {invoice>ShipAddress}&#10;
+                   Region : {invoice>ShipRegion}&#10;
+                   Country : {invoice>ShipCountry}&#10;&#10;
+                   Product Name : {invoice>ProductName}&#10;
+                   Unit Price : {invoice>UnitPrice}&#10;
+                   Quantity : {invoice>Quantity}"/>
+	</Page>
+</mvc:View>

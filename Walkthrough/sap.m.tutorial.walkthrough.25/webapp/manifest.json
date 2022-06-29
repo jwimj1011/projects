@@ -1,0 +1,85 @@
+{
+    "_version": "1.21.0",
+    "sap.app": {
+        "id": "sap.ui.demo.walkthrough",
+        "type": "application",
+        "i18n": {
+            "bundleUrl": "i18n/i18n.properties",
+            "supportedLocales": [
+                ""
+            ],
+            "fallbackLocale": ""
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "northwind": {
+				"uri": "http://localhost:8081/https://services.odata.org/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+                }
+            },
+            "invoiceRemote": {
+                "uri": "Northwind/V2/northwind/northwind.svc/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "@sap/ux-app-migrator:freestyle",
+            "version": "1.6.3",
+            "toolsId": "f1767c99-c1ee-4938-a675-97f6a73396df"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "sap.ui.demo.walkthrough.view.App",
+            "type": "XML",
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.98.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "sap.ui.demo.walkthrough.i18n.i18n",
+                    "supportedLocales": [
+                        ""
+                    ],
+                    "fallbackLocale": ""
+                }
+            },
+            "invoice": {
+                "dataSource": "invoiceRemote"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        }
+    }
+}

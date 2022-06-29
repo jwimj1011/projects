@@ -1,0 +1,158 @@
+{
+  "_version": "1.37.0",
+  "sap.app": {
+    "id": "MasterDetailApplication.ymastermock",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap-ux/fiori-freestyle-writer:basic",
+      "version": "0.11.15",
+      "toolsId": "7de2979f-d35c-46e3-be8d-a87f188878a2"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.102.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {},
+        "sap.uxap":{}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "MasterDetailApplication.ymastermock.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "async": true,
+        "path": "MasterDetailApplication.ymastermock.view",
+        "transition" : "slide",
+        "controlId": "flexibleColumnLayout",
+        "clearControlAggregation": false,
+				"bypassed": {
+				}
+      },
+			"routes": [
+        {
+          "pattern": "page2",
+          "name": "page2",
+          "target": "page2",
+          "layout": "EndColumnFullScreen"
+        },
+				{
+					"pattern": ":layout:",
+					"name": "master",
+					"target": [
+						"master",
+						"detail"
+					]
+				},
+				{
+					"pattern": "detail/{product}/{layout}",
+					"name": "detail",
+					"target": [
+						"master",
+						"detail"
+					]
+				},
+        {
+          "pattern": "detail/{product}/detailDetail/{supplier}/{layout}",
+          "name": "detailDetail",
+          "target": [
+                    "master",
+                    "detail",
+                    "detailDetail"
+          ]
+        }
+			],
+			"targets": {
+				"master": {
+					"name": "Master",
+					"controlAggregation": "beginColumnPages"
+				},
+				"detail": {
+					"name": "Detail",
+					"controlAggregation": "midColumnPages"
+				},
+        "detailDetail": {
+          "name": "DetailDetail",
+          "controlAggregation": "endColumnPages"
+        },
+        "page2": {
+          "name": "AboutPage",
+          "controlAggregation": "endColumnPages"
+        }
+			}
+    },
+    "rootView": {
+      "viewName": "MasterDetailApplication.ymastermock.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "fcl"
+    }
+  }
+}
