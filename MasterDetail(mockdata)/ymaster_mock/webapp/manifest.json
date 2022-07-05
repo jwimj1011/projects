@@ -151,7 +151,7 @@
     "rootView": {
       "viewName": "MasterDetailApplication.ymastermock.view.App",
       "type": "XML",
-      "async": true,
+      "async": false,
       "id": "fcl"
     }
   }

@@ -1,0 +1,8 @@
+specVersion: '2.3'
+metadata:
+  name: "sap.ui.integration.sample.CardsLayout"
+type: application
+resources:
+  configuration:
+    paths:
+      webapp: .
